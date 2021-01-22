@@ -24,11 +24,16 @@ public class Program {
         IEnumerable<int> d = getData().NewDistinct().ToArray();
     }
 
+    [Benchmark]
+    public void HashSet() {
+        IEnumerable<int> d = System.Linq.Enumerable.ToArray( new HashSet<int>( getData() ) );
+    }
+
     private static int[] data = null;
     // private static int[] data = new int[260];
     // private static int[] data = new int[1030];
     // private static int[] data = new int[200_000];
-    
+
     private static int[] getData() {
         if ( data != null ) {
             return data;
